@@ -442,7 +442,11 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
 .faq-a{padding:0 1.6rem 1.5rem;color:var(--muted);font-size:.9rem;line-height:1.75}
 
 /* ── BREADCRUMB (reuses existing muted/neon/border tokens) ── */
-.crumb{padding:100px 5vw 0;font-size:.8rem;color:var(--muted2)}
+/* FIX: .crumb is a <nav> element, so it inherits position:fixed/z-index:1000/
+   height:70px from the base `nav{}` tag selector above — that silently stacks
+   it on top of the real #navbar and blocks clicks on the dropdowns/hamburger.
+   Explicitly reset those properties here. */
+.crumb{position:static;z-index:auto;height:auto;top:auto;left:auto;right:auto;background:none;backdrop-filter:none;border-bottom:none;padding:100px 5vw 0;font-size:.8rem;color:var(--muted2)}
 .crumb a{color:var(--muted2);text-decoration:none;transition:color .25s}
 .crumb a:hover{color:var(--neon)}
 .crumb span{margin:0 .5em;opacity:.4}
@@ -490,6 +494,7 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
 }
 </style>
 </head>
+<body>
 <!-- ═══════ FREE AUDIT POPUP ═══════ -->
 <div class="popup-overlay" id="auditPopup" role="dialog" aria-modal="true" aria-label="Free Growth Audit">
   <div class="popup-box" id="auditPopupBox">
@@ -712,10 +717,10 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
   </div>
   <p class="hero-cta-sub">No commitment. We review your website, Google Business Profile and current ads, then show you exactly what patients see when they search for your specialisation.</p>
   <div class="hero-stats">
-    <div><div class="stat-num">ETHICAL</div><div class="stat-label">Healthcare-First Marketing</div></div>
-    <div><div class="stat-num">LOCAL</div><div class="stat-label">Ghaziabad Market Specialists</div></div>
-    <div><div class="stat-num">PATIENTS</div><div class="stat-label">Genuine Enquiry Generation</div></div>
-    <div><div class="stat-num">PREMIUM</div><div class="stat-label">Results-Driven</div></div>
+    <div><div class="stat-num">ETHICAL</div><div class="stat-label">Compliant, No Fake Claims</div></div>
+    <div><div class="stat-num">LOCAL</div><div class="stat-label">Ghaziabad-Based Team</div></div>
+    <div><div class="stat-num">WEEKLY</div><div class="stat-label">Transparent Reporting</div></div>
+    <div><div class="stat-num">FREE</div><div class="stat-label">No-Obligation Audit</div></div>
   </div>
   <div class="scroll-ind"><span>Scroll</span><div class="scroll-line"></div></div>
 </section>
@@ -861,7 +866,7 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
   <div class="eyebrow">Healthcare Marketing Challenges</div>
   <h2 class="sec-title rv">Problems We <span class="grad">Solve Every Day</span></h2>
   <div class="why-grid rv2" style="margin-top:2.8rem;grid-template-columns:1fr">
-    <div class="why-list" style="gap:1.6rem">
+    <div class="why-list" style="gap:1.8rem 3rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
       <div class="why-item"><div class="why-num">01</div><div class="why-text"><h4>Low Patient Enquiries</h4><p>Most clinics rely purely on walk-ins and referrals. A strong Google Business Profile and local SEO presence capture the growing share of patients who search online first.</p></div></div>
       <div class="why-item"><div class="why-num">02</div><div class="why-text"><h4>Poor Google Visibility</h4><p>Being on page two of search results for your specialisation means patients never find you. Focused local SEO fixes this over a realistic, sustained timeline.</p></div></div>
       <div class="why-item"><div class="why-num">03</div><div class="why-text"><h4>Weak Online Reputation</h4><p>A handful of old, unanswered reviews can outweigh years of good patient care in a prospective patient's eyes. Active review management and thoughtful responses rebuild that trust.</p></div></div>
@@ -888,6 +893,10 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
     <div class="tl-item"><div class="tl-dot">07</div><h4>Patient Lead Generation</h4><p>Enquiries flow in through your website, WhatsApp automation and AI chatbot, captured around the clock.</p></div>
     <div class="tl-item"><div class="tl-dot">08</div><h4>Growth</h4><p>A repeatable, ethical patient enquiry pipeline — the point where marketing becomes infrastructure, not a recurring cost.</p></div>
   </div>
+  <div class="rv2" style="margin-top:3.5rem;padding-top:2.8rem;border-top:1px solid var(--border);text-align:center">
+    <p style="color:var(--muted);font-size:.95rem;margin-bottom:1.4rem">See how this process would work for your specific clinic or specialisation.</p>
+    <button class="btn-p" onclick="openAuditPopup()" aria-label="Get a free healthcare marketing audit"><span>Get Your Free Healthcare Audit</span><span>→</span></button>
+  </div>
 </section>
 
 <div class="divider"></div>
@@ -911,20 +920,21 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
 
 <div class="divider"></div>
 
-<!-- ═══════ 8. INDUSTRIES WE SERVE (Healthcare first) ═══════ -->
-<section class="pad ind-section" id="industries">
-  <div class="eyebrow">Industries We Serve</div>
-  <h2 class="sec-title rv">Healthcare, and <span class="grad">Every Sector Beyond It.</span></h2>
-  <div class="ind-tiles rv2">
-    <span class="ind-tile" style="border-color:rgba(0,245,212,.4)"><span class="ind-tile-dot"></span>Healthcare &amp; Hospitals</span>
-    <span class="ind-tile"><span class="ind-tile-dot"></span>Real Estate &amp; Property Consultants</span>
-    <span class="ind-tile"><span class="ind-tile-dot"></span>Schools &amp; Coaching Institutes</span>
-    <span class="ind-tile"><span class="ind-tile-dot"></span>Manufacturing &amp; Industrial</span>
-    <span class="ind-tile"><span class="ind-tile-dot"></span>Retail &amp; Commercial Businesses</span>
-    <span class="ind-tile"><span class="ind-tile-dot"></span>Restaurants &amp; Cafes</span>
-    <span class="ind-tile"><span class="ind-tile-dot"></span>Beauty &amp; Wellness</span>
-    <span class="ind-tile"><span class="ind-tile-dot"></span>Corporate &amp; B2B Companies</span>
-    <span class="ind-tile"><span class="ind-tile-dot"></span>E-commerce Brands</span>
+<!-- ═══════ 8. WHAT'S INCLUDED IN YOUR FREE AUDIT ═══════ -->
+<section class="pad ind-section" id="audit-included">
+  <div class="eyebrow">No Guesswork</div>
+  <h2 class="sec-title rv">What's Included in Your <span class="grad">Free Healthcare Marketing Audit</span></h2>
+  <p style="color:var(--muted);font-size:.95rem;line-height:1.8;margin-top:.9rem;max-width:640px" class="rv">A patient's trust in your practice is too important for guesswork — so is choosing who markets it. Here's exactly what we review before we ever ask for your business.</p>
+  <div class="why-list rv2" style="margin-top:2.8rem;gap:1.8rem 3rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
+    <div class="why-item"><div class="why-num">01</div><div class="why-text"><h4>Website &amp; Google Business Profile Review</h4><p>How your current site and profile perform on speed, mobile experience, and whether they clearly present your credentials and facilities.</p></div></div>
+    <div class="why-item"><div class="why-num">02</div><div class="why-text"><h4>Local SEO &amp; Search Visibility Check</h4><p>Whether you show up when patients search your specialisation plus your locality — and what's missing if you don't.</p></div></div>
+    <div class="why-item"><div class="why-num">03</div><div class="why-text"><h4>Online Reputation &amp; Review Audit</h4><p>A review of your current rating, review volume and response pattern, since a handful of unanswered reviews can outweigh years of good patient care.</p></div></div>
+    <div class="why-item"><div class="why-num">04</div><div class="why-text"><h4>Ad Compliance Review</h4><p>If you're already running Google or Meta Ads, we check they follow healthcare advertising policies — ethical campaigns protect both patients and your account.</p></div></div>
+    <div class="why-item"><div class="why-num">05</div><div class="why-text"><h4>Competing Clinic Benchmark</h4><p>A quick look at how nearby clinics or hospitals in your specialisation are positioning themselves online, so you know where you stand.</p></div></div>
+    <div class="why-item"><div class="why-num">06</div><div class="why-text"><h4>A Clear, Written Action Plan</h4><p>No sales pitch disguised as an audit — a specific list of what to fix first, whether or not you choose to work with us.</p></div></div>
+  </div>
+  <div class="rv2" style="margin-top:3rem;text-align:center">
+    <button class="btn-p" onclick="openAuditPopup()" aria-label="Get a free healthcare marketing audit"><span>Claim Your Free Audit</span><span>→</span></button>
   </div>
 </section>
 
