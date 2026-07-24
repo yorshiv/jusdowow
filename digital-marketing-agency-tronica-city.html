@@ -442,7 +442,11 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
 .faq-a{padding:0 1.6rem 1.5rem;color:var(--muted);font-size:.9rem;line-height:1.75}
 
 /* ── BREADCRUMB (reuses existing muted/neon/border tokens) ── */
-.crumb{padding:100px 5vw 0;font-size:.8rem;color:var(--muted2)}
+/* FIX: .crumb is a <nav> element, so it inherits position:fixed/z-index:1000/
+   height:70px from the base `nav{}` tag selector above — that silently stacks
+   it on top of the real #navbar and blocks clicks on the dropdowns/hamburger.
+   Explicitly reset those properties here. */
+.crumb{position:static;z-index:auto;height:auto;top:auto;left:auto;right:auto;background:none;backdrop-filter:none;border-bottom:none;padding:100px 5vw 0;font-size:.8rem;color:var(--muted2)}
 .crumb a{color:var(--muted2);text-decoration:none;transition:color .25s}
 .crumb a:hover{color:var(--neon)}
 .crumb span{margin:0 .5em;opacity:.4}
@@ -481,6 +485,7 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
 }
 </style>
 </head>
+<body>
 <!-- ═══════ FREE AUDIT POPUP ═══════ -->
 <div class="popup-overlay" id="auditPopup" role="dialog" aria-modal="true" aria-label="Free Growth Audit">
   <div class="popup-box" id="auditPopupBox">
@@ -1003,7 +1008,7 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
   <h2 class="sec-title rv">Tronica City's <span class="grad">Business &amp; Industrial Ecosystem</span></h2>
   <p style="color:var(--muted);font-size:.95rem;line-height:1.8;margin-top:1rem;max-width:680px" class="rv">Understanding the ground reality of this market is why we approach it differently from a generic city page.</p>
   <div class="why-grid rv2" style="margin-top:2.8rem;grid-template-columns:1fr">
-    <div class="why-list" style="gap:1.6rem">
+    <div class="why-list" style="gap:1.8rem 3rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr))">
       <div class="why-item"><div class="why-num">01</div><div class="why-text"><h4>A Fast-Growing Real Estate Market</h4><p>As one of the most affordable planned townships this close to Delhi, Tronica City has seen steady residential and commercial project launches, with early buyers and businesses benefiting from lower entry prices than in more established parts of Ghaziabad.</p></div></div>
       <div class="why-item"><div class="why-num">02</div><div class="why-text"><h4>Industrial Plots &amp; Manufacturing Units</h4><p>UPSIDC has allotted roughly 2,400 of Trans Delhi Signature City's 3,600 acres across 22 sectors, hosting manufacturers in electronics, engineering, textiles, chemicals, automotive components and food processing.</p></div></div>
       <div class="why-item"><div class="why-num">03</div><div class="why-text"><h4>Warehouses &amp; Logistics Parks</h4><p>Proximity to the Delhi-Meerut Expressway and the Eastern Peripheral Expressway has made the belt attractive for warehousing, cold storage and distribution operations serving the wider NCR.</p></div></div>
