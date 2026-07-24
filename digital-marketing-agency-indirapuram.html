@@ -442,7 +442,11 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
 .faq-a{padding:0 1.6rem 1.5rem;color:var(--muted);font-size:.9rem;line-height:1.75}
 
 /* ── BREADCRUMB (reuses existing muted/neon/border tokens) ── */
-.crumb{padding:100px 5vw 0;font-size:.8rem;color:var(--muted2)}
+/* FIX: .crumb is a <nav> element, so it inherits position:fixed/z-index:1000/
+   height:70px from the base `nav{}` tag selector above — that silently stacks
+   it on top of the real #navbar and blocks clicks on the dropdowns/hamburger.
+   Explicitly reset those properties here. */
+.crumb{position:static;z-index:auto;height:auto;top:auto;left:auto;right:auto;background:none;backdrop-filter:none;border-bottom:none;padding:100px 5vw 0;font-size:.8rem;color:var(--muted2)}
 .crumb a{color:var(--muted2);text-decoration:none;transition:color .25s}
 .crumb a:hover{color:var(--neon)}
 .crumb span{margin:0 .5em;opacity:.4}
@@ -481,6 +485,7 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
 }
 </style>
 </head>
+<body>
 <!-- ═══════ FREE AUDIT POPUP ═══════ -->
 <div class="popup-overlay" id="auditPopup" role="dialog" aria-modal="true" aria-label="Free Growth Audit">
   <div class="popup-box" id="auditPopupBox">
@@ -706,7 +711,7 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
     <div><div class="stat-num">52K+</div><div class="stat-label">Households in Indirapuram</div></div>
     <div><div class="stat-num">4</div><div class="stat-label">Major Malls &amp; Commercial Hubs</div></div>
     <div><div class="stat-num">LOCAL</div><div class="stat-label">Every Business Category Served</div></div>
-    <div><div class="stat-num">PREMIUM</div><div class="stat-label">Results-Driven</div></div>
+    <div><div class="stat-num">WEEKLY</div><div class="stat-label">Transparent Reporting</div></div>
   </div>
   <div class="scroll-ind"><span>Scroll</span><div class="scroll-line"></div></div>
 </section>
@@ -1053,27 +1058,9 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
 
 <div class="divider"></div>
 
-<!-- ═══════ 11. INDUSTRIES WE SERVE (recap) ═══════ -->
-<section class="pad ind-section" id="industries">
-  <div class="eyebrow">Industries We Serve in Indirapuram</div>
-  <h2 class="sec-title rv">Built for <span class="grad">Indirapuram's Actual Business Mix.</span></h2>
-  <div class="ind-tiles rv2">
-    <span class="ind-tile"><span class="ind-tile-dot"></span>Real Estate &amp; Property Consultants</span>
-    <span class="ind-tile"><span class="ind-tile-dot"></span>Mall &amp; Commercial Retail</span>
-    <span class="ind-tile"><span class="ind-tile-dot"></span>Clinics &amp; Diagnostics</span>
-    <span class="ind-tile"><span class="ind-tile-dot"></span>Schools &amp; Coaching Institutes</span>
-    <span class="ind-tile"><span class="ind-tile-dot"></span>Restaurants &amp; Cafes</span>
-    <span class="ind-tile"><span class="ind-tile-dot"></span>Salons &amp; Beauty Brands</span>
-    <span class="ind-tile"><span class="ind-tile-dot"></span>Gyms &amp; Fitness Studios</span>
-    <span class="ind-tile"><span class="ind-tile-dot"></span>CA Firms &amp; Professional Services</span>
-    <span class="ind-tile"><span class="ind-tile-dot"></span>E-commerce Brands</span>
-    <span class="ind-tile"><span class="ind-tile-dot"></span>Banquet &amp; Event Venues</span>
-  </div>
-</section>
-
 <div class="divider"></div>
 
-<!-- ═══════ 12. RELATED SERVICES ═══════ -->
+<!-- ═══════ 11. RELATED SERVICES ═══════ -->
 <section class="pad-sm" id="related-services">
   <div class="eyebrow">Related Services</div>
   <h2 class="sec-title rv" style="font-size:clamp(1.6rem,3vw,2.2rem)">Explore Our <span class="grad">Full Service Range</span></h2>
@@ -1090,7 +1077,7 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
 
 <div class="divider"></div>
 
-<!-- ═══════ 13. FAQ ═══════ -->
+<!-- ═══════ 12. FAQ ═══════ -->
 <section class="pad" id="faq">
   <div class="eyebrow">Indirapuram Digital Marketing FAQ</div>
   <h2 class="sec-title rv">Questions Indirapuram <span class="grad">Businesses Actually Ask</span></h2>
@@ -1138,7 +1125,7 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
   </div>
 </section>
 
-<!-- ═══════ 14. FREE MARKETING AUDIT CTA ═══════ -->
+<!-- ═══════ 13. FREE MARKETING AUDIT CTA ═══════ -->
 <div class="cta-banner rv">
   <h2>READY FOR YOUR FREE <span style="background:linear-gradient(135deg,var(--neon),var(--neon2));-webkit-background-clip:text;-webkit-text-fill-color:transparent">MARKETING AUDIT</span>?</h2>
   <p>From Vaibhav Khand's clinics to the shops inside Aditya Mall — join the Indirapuram businesses who chose a local agency that actually knows their market.</p>
@@ -1152,7 +1139,7 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
 
 <div class="divider"></div>
 
-<!-- ═══════ 15. CONTACT (exact reuse of homepage form) ═══════ -->
+<!-- ═══════ 14. CONTACT (exact reuse of homepage form) ═══════ -->
 <section class="pad" id="contact">
   <div class="eyebrow">Start Growing Today</div>
   <h2 class="sec-title rv">Get Your Free <span class="grad">Indirapuram Growth Audit</span></h2>
