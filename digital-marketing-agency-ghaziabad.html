@@ -442,7 +442,11 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
 .faq-a{padding:0 1.6rem 1.5rem;color:var(--muted);font-size:.9rem;line-height:1.75}
 
 /* ── BREADCRUMB (reuses existing muted/neon/border tokens) ── */
-.crumb{padding:100px 5vw 0;font-size:.8rem;color:var(--muted2)}
+/* FIX: .crumb is a <nav> element, so it inherits position:fixed/z-index:1000/
+   height:70px from the base `nav{}` tag selector above — that silently stacks
+   it on top of the real #navbar and blocks clicks on the dropdowns/hamburger.
+   Explicitly reset those properties here. */
+.crumb{position:static;z-index:auto;height:auto;top:auto;left:auto;right:auto;background:none;backdrop-filter:none;border-bottom:none;padding:100px 5vw 0;font-size:.8rem;color:var(--muted2)}
 .crumb a{color:var(--muted2);text-decoration:none;transition:color .25s}
 .crumb a:hover{color:var(--neon)}
 .crumb span{margin:0 .5em;opacity:.4}
@@ -702,7 +706,7 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
     <div><div class="stat-num">10+</div><div class="stat-label">Ghaziabad Localities Served</div></div>
     <div><div class="stat-num">B2B</div><div class="stat-label">&amp; Local B2C Expertise</div></div>
     <div><div class="stat-num">LOCAL</div><div class="stat-label">Tronica City Office</div></div>
-    <div><div class="stat-num">PREMIUM</div><div class="stat-label">Results-Driven</div></div>
+    <div><div class="stat-num">WEEKLY</div><div class="stat-label">Transparent Enquiry Reporting</div></div>
   </div>
   <div class="scroll-ind"><span>Scroll</span><div class="scroll-line"></div></div>
 </section>
@@ -951,7 +955,7 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
 
 <div class="divider"></div>
 
-<!-- ═══════ 7. HOW WE WORK — Process ═══════ -->
+<!-- ═══════ 6. HOW WE WORK — Process ═══════ -->
 <section class="pad" id="process">
   <div class="eyebrow">Our Process</div>
   <h2 class="sec-title rv">From First Call to <span class="grad">Measurable Growth</span></h2>
@@ -969,7 +973,7 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
 
 <div class="divider"></div>
 
-<!-- ═══════ 8. OUR WORK — Proof (exact reuse of homepage section) ═══════ -->
+<!-- ═══════ 7. OUR WORK — Proof (exact reuse of homepage section) ═══════ -->
 <section class="pad" id="work">
   <div class="eyebrow">Our Work</div>
   <h2 class="sec-title rv">Creative Work That <span class="grad">Moves Brands</span> Forward.</h2>
@@ -1011,7 +1015,7 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
 
 <div class="divider"></div>
 
-<!-- ═══════ 9. GHAZIABAD MARKET INSIGHTS — supporting authority content ═══════ -->
+<!-- ═══════ 8. GHAZIABAD MARKET INSIGHTS — supporting authority content ═══════ -->
 <section class="pad" id="market">
   <div class="eyebrow">Ghaziabad Market Insights</div>
   <h2 class="sec-title rv">Ghaziabad Isn't One Market. <span class="grad">It's Two.</span></h2>
@@ -1050,7 +1054,7 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
 
 <div class="divider"></div>
 
-<!-- ═══════ 10. RELATED SERVICES — final navigation aid before FAQ ═══════ -->
+<!-- ═══════ 9. RELATED SERVICES — final navigation aid before FAQ ═══════ -->
 <section class="pad-sm" id="related-services">
   <div class="eyebrow">Related Services</div>
   <h2 class="sec-title rv" style="font-size:clamp(1.6rem,3vw,2.2rem)">Explore Our <span class="grad">Full Service Range</span></h2>
@@ -1066,7 +1070,7 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
 
 <div class="divider"></div>
 
-<!-- ═══════ 11. FAQ — objection handling ═══════ -->
+<!-- ═══════ 10. FAQ — objection handling ═══════ -->
 <section class="pad" id="faq">
   <div class="eyebrow">Ghaziabad Digital Marketing FAQ</div>
   <h2 class="sec-title rv">Questions Ghaziabad <span class="grad">Businesses Actually Ask</span></h2>
@@ -1114,7 +1118,7 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
   </div>
 </section>
 
-<!-- ═══════ 12. FREE MARKETING AUDIT CTA — final push ═══════ -->
+<!-- ═══════ 11. FREE MARKETING AUDIT CTA — final push ═══════ -->
 <div class="cta-banner rv">
   <h2>READY FOR YOUR FREE <span style="background:linear-gradient(135deg,var(--neon),var(--neon2));-webkit-background-clip:text;-webkit-text-fill-color:transparent">MARKETING AUDIT</span>?</h2>
   <p>From Sahibabad's factory floors to Indirapuram's clinics — join the Ghaziabad businesses who chose a local agency that actually knows their market.</p>
@@ -1128,7 +1132,7 @@ footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid va
 
 <div class="divider"></div>
 
-<!-- ═══════ 13. CONTACT — action (exact reuse of homepage form) ═══════ -->
+<!-- ═══════ 12. CONTACT — action (exact reuse of homepage form) ═══════ -->
 <section class="pad" id="contact">
   <div class="eyebrow">Start Growing Today</div>
   <h2 class="sec-title rv">Get Your Free <span class="grad">Ghaziabad Growth Audit</span></h2>
